@@ -1,6 +1,6 @@
 package de.lesh.betterself.util;
 
-public class Conf {
+public class Config {
 
 	private String userToken = "";
 	public String prefix = "";
