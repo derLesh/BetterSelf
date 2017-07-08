@@ -1,5 +1,8 @@
 package de.lesh.betterself.commands.admin;
 
-public class Ban {
+import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
+public class Ban extends ListenerAdapter {
+	
+	
 }
