@@ -10,9 +10,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import de.lesh.betterself.commands.*;
+import de.lesh.betterself.commands.admin.*;
 import de.lesh.betterself.util.Config;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.JDA.Status;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.JDAInfo;
 import net.dv8tion.jda.core.entities.User;
@@ -26,20 +28,23 @@ public class Main {
 	public static String fileName = "config.json";
 	public static String dir = System.getProperty("user.dir") + "/";
     public static final SimpleLog LOG = SimpleLog.getLog("Application");
-    public static final User USER = null;
+    public static User USER = null;
 	
 	public static void main(String[] args) throws Exception{
 		setup();
-		jda = new JDABuilder(AccountType.CLIENT).setToken(CONFIG.token()).buildAsync();
+		jda = new JDABuilder(AccountType.CLIENT).setToken(CONFIG.getToken()).buildAsync();
 		
 		System.out.println("[BOOT] >> Launching BetterSelf");
 		System.out.println("[BOOT] >> Version: BETA");
 		System.out.println("[INFO] >> Checking JDA Version: " + JDAInfo.VERSION);
-//
-//		USER = jda.getSelfUser();
-//		LOG.info("Succesful logged into " + USER.getName());
+
+		login();
+		USER = jda.getSelfUser();
+		LOG.info("Succesful logged into " + USER.getName());
 		
-		jda.addEventListener(new Unshorter());
+		jda.addEventListener(new Unshortener());
+		jda.addEventListener(new Ban());
+		jda.addEventListener(new Kick());
 		
 		System.out.println("[SUCCESSFUL] >> Added all EventListeners");
 		System.out.println("[SUCCESSFUL] >> Activating RoleBot");
@@ -61,7 +66,7 @@ public class Main {
 			} else {
 				BufferedReader reader = new BufferedReader(new FileReader(file));
 				CONFIG = GSON.fromJson(reader, Config.class);
-				if(CONFIG.token() == null || CONFIG.token().isEmpty()) {
+				if(CONFIG.getToken() == null || CONFIG.getToken().isEmpty()) {
 					LOG.fatal("There is no token. Insert your personal token to use this bot");
 					return;
 				} 
@@ -74,5 +79,13 @@ public class Main {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void login(){
+        while (jda.getStatus() != Status.CONNECTED) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ignored) {}
+        }
 	}
 }

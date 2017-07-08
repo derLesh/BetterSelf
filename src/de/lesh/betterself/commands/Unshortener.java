@@ -6,26 +6,23 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.concurrent.TimeUnit;
 
-import com.google.gson.Gson;
-
+import de.lesh.betterself.Main;
 import de.lesh.betterself.util.Config;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-public class Unshorter extends ListenerAdapter {
+public class Unshortener extends ListenerAdapter {
 	
 	public static Config CONFIG = new Config();
-
 	public static String output;
-	
+
 	public void onMessageReceived(MessageReceivedEvent e){
 		Message msg = e.getMessage();
 		
-		if (msg.getRawContent().startsWith(CONFIG.prefix() + "unshort")) {
+		if (msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "unshort")) {
 			String[] split = e.getMessage().getRawContent().split("\\s+", 2);
 			String unshorting = "";
 			unshorting = split[1];
@@ -48,7 +45,7 @@ public class Unshorter extends ListenerAdapter {
 			}
 			e.getChannel().sendMessage("[UNSHORTENER] >> Original link: " + output).queue();
 			
-			System.out.println("[SUCCESFUL] >> UNSHORTED - Original: " + unshorting + " - Unshorted: " + output);
+			System.out.println("[SUCCESSFUL] >> UNSHORTED - Original: " + unshorting + " - Unshorted: " + output);
 			e.getMessage().delete().queueAfter(1, TimeUnit.MILLISECONDS);
 		}	
 	}

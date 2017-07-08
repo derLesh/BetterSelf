@@ -5,11 +5,11 @@ public class Config {
 	private String userToken = "";
 	public String prefix = "";
 	
-	public String token(){
+	public String getToken(){
 		return userToken;
 	}
 	
-	public String prefix() {
+	public String getPrefix() {
 		return prefix;
 	}
 }
