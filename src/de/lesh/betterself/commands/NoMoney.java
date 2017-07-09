@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,6 +37,10 @@ public class NoMoney extends ListenerAdapter {
 				connect.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
 				connect.setRequestProperty("Referer", "http://thor.johanpaul.net/lengthen");
 				connect.setRequestMethod("GET");
+				try(Scanner s = new Scanner(shorten.openStream())){
+					s.useDelimiter("\\A");
+					s.next();//returns the content of the wwbsire..
+				}
 				BufferedReader in = new BufferedReader(new InputStreamReader(connect.getInputStream()));
 				Matcher m = Pattern.compile("value=\"(.*?)\"").matcher(unshortener);
 						if (m.find()) {
