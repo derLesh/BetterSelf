@@ -37,12 +37,12 @@ public class NoMoney extends ListenerAdapter {
 				connect.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
 				connect.setRequestProperty("Referer", "http://thor.johanpaul.net/lengthen");
 				connect.setRequestMethod("GET");
-				try(Scanner s = new Scanner(shorten.openStream())){
+				try(Scanner s = new Scanner(connect.getInputStream())){
 					s.useDelimiter("\\A");
 					s.next();//returns the content of the wwbsire..
 				}
 				BufferedReader in = new BufferedReader(new InputStreamReader(connect.getInputStream()));
-				Matcher m = Pattern.compile("value=\"(.*?)\"").matcher(unshortener);
+				Matcher m = Pattern.compile("value=\"(.*?)\"").matcher(output);
 						if (m.find()) {
 						    output = m.group(1);
 						}
