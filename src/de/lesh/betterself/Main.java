@@ -5,12 +5,14 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import de.lesh.betterself.commands.*;
 import de.lesh.betterself.commands.admin.*;
+import de.lesh.betterself.commands.fun.*;
 import de.lesh.betterself.util.Config;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -29,8 +31,10 @@ public class Main {
 	public static String dir = System.getProperty("user.dir") + "/";
     public static final SimpleLog LOG = SimpleLog.getLog("Application");
     public static User USER = null;
+    public static final String OS = System.getProperty("os.name").toLowerCase(); 
 	
 	public static void main(String[] args) throws Exception{
+		installer();
 		setup();
 		jda = new JDABuilder(AccountType.CLIENT).setToken(CONFIG.getToken()).buildAsync();
 		
@@ -45,6 +49,9 @@ public class Main {
 		jda.addEventListener(new Unshortener());
 		jda.addEventListener(new Ban());
 		jda.addEventListener(new Kick());
+		jda.addEventListener(new WhatAPleb());
+		jda.addEventListener(new Github());
+		jda.addEventListener(new NoMoney());
 		
 		System.out.println("[SUCCESSFUL] >> Added all EventListeners");
 		System.out.println("[SUCCESSFUL] >> Activating RoleBot");
@@ -87,5 +94,27 @@ public class Main {
                 Thread.sleep(100);
             } catch (InterruptedException ignored) {}
         }
+	}
+	
+	public static void installer() throws IOException{
+		if(OS.indexOf("win") >= 0){
+		File installer = new File("start.bat");
+			if(!installer.exists()) {
+				if(installer.createNewFile()) {
+					BufferedWriter write = new BufferedWriter(new FileWriter(installer));
+					write.write("@echo off");
+					write.newLine();
+					write.write("java -jar BetterSelf.jar");
+					write.newLine();
+					write.write("pause");
+					write.close();
+					LOG.info("Successful created Start.bat");
+				} else {
+					LOG.fatal("There was a problem? I dont now the problem");
+				}
+			}
+		} else {
+			LOG.info("Detected differend system. Not windows. Startup will come soon");
+		}
 	}
 }

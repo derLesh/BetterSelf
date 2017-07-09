@@ -18,7 +18,7 @@ public class Ban extends ListenerAdapter {
 		Message msg = e.getMessage();
 		User banned = null;
 		String[] reasons = {"Spamming", "Racist", "Test"};
-		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "ban")){
+		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "ban") && msg.getAuthor().equals(Main.USER)){
 			//String[] split = e.getMessage().getRawContent().split("\\s+", 2);
 			EmbedBuilder eB = new EmbedBuilder();
 			banned = e.getMessage().getMentionedUsers().get(0);

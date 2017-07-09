@@ -17,7 +17,7 @@ public class Kick extends ListenerAdapter{
 		Message msg = e.getMessage();
 		Member kicked = null;
 		String[] reasons = {"Spamming", "Racist", "Test"};
-		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "kick")){
+		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "kick") && msg.getAuthor().equals(Main.USER)){
 			//String[] split = e.getMessage().getRawContent().split("\\s+", 2);
 			EmbedBuilder eB = new EmbedBuilder();
 			kicked = e.getGuild().getMember((e.getMessage().getMentionedUsers().get(0)));
