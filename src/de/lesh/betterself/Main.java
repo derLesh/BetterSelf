@@ -12,7 +12,9 @@ import com.google.gson.GsonBuilder;
 
 import de.lesh.betterself.commands.*;
 import de.lesh.betterself.commands.admin.*;
+import de.lesh.betterself.commands.admin.org.*;
 import de.lesh.betterself.commands.fun.*;
+import de.lesh.betterself.commands.info.*;
 import de.lesh.betterself.util.Config;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -52,6 +54,9 @@ public class Main {
 		jda.addEventListener(new WhatAPleb());
 		jda.addEventListener(new Github());
 		jda.addEventListener(new NoMoney());
+		jda.addEventListener(new ServerInfo());
+		jda.addEventListener(new ListBots());
+		jda.addEventListener(new Reaction());
 		
 		System.out.println("[SUCCESSFUL] >> Added all EventListeners");
 		System.out.println("[SUCCESSFUL] >> Activating RoleBot");
