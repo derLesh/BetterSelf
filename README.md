@@ -1,5 +1,5 @@
 # BetterSelf
-Discord Selfbot with "multiple" commands. I challenged myself to reach over 100 different commands in one SelfBot. (But we all know, this wont happen) :sweat_smile:
+BetterSelf is a Discord Selfbot with "multiple" commands. I challenged myself to reach over 100 different commands in one SelfBot. (But we all know, this wont happen) :sweat_smile:
 
 ## Features
 * Unshorter > Unshort links like bit.ly and get the full url
