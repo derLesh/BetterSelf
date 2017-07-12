@@ -11,12 +11,20 @@ Discord Selfbot with "multiple" commands. I challenged myself to reach over 100 
 
 
 # Setup
-1. Download the newest version of **BetterSelf**.jar . Save this jar in any folder and execute the file. It will automaticly create a config.json file and a usercard.json file. If your OS is Windows it will also create a start.bat . You can use this file to start the Bot in a Command Promt. **NOTE:** The first time you start the jar it will close automaticly after creating all files.
+1. **Download the newest version of [BetterSelf](https://github.com/LeshDev/BetterSelf/releases).jar** . Save this jar in any folder and execute the file. It will automaticly create a config.json file and a usercard.json file. If your OS is Windows it will also create a start.bat . You can use this file to start the Bot in a Command Promt. **NOTE:** The first time you start the jar it will close automaticly after creating all files.
 
-2. 
+2. **Before you restart the bot again** you must paste your Discord Token and your bot prefix (like +command) into the config.json . You will get your Discord Token in this tutorial: [Get your token](https://github.com/LeshDev/BetterSelf#get-your-token)
 
+3. **Personalize your SelfBot** with your favourite color and own Embed Footer message. THIS FEATURE WILL COME LATER 
+
+4. **It's time to start BetterSelf** - If your OS is Windows click on the previously generated start.bat and the bot will beginn to load. On other OS's I'm currently working on a launcher file. This will be avaible soon 
 
 # Informations
 ## Get your token
+1. Press `CTRL + SHIFT + I` in your desktop client or in the browser. It will open the developer window for the discord page. Click on `Application`
 
 ## Setup your user card
+
+## Get Message ID
+##### This is important for **Reaction**
+1. 
