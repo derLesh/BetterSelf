@@ -7,8 +7,8 @@ BetterSelf is a Discord Selfbot with "multiple" commands. I challenged myself to
 * Translate > Translate text from your language to english (Currently in Work in Progress)
 * Survey > Open a survey with reactions
 * LMGTFY > Creates a lmgtfy link with your text
-* Reaction > React to a message in discord (
-
+* Reaction > React to a message in discord. You will need the MessageID. [Get Message ID](https://github.com/LeshDev/BetterSelf#get-message-id)
+* Server Info > All infos about the current server in one message
 
 # Setup
 1. **Download the newest version of [BetterSelf](https://github.com/LeshDev/BetterSelf/releases).jar** . Save this jar in any folder and execute the file. It will automaticly create a config.json file and a usercard.json file. If your OS is Windows it will also create a start.bat . You can use this file to start the Bot in a Command Promt. **NOTE:** The first time you start the jar it will close automaticly after creating all files.
