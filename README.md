@@ -36,3 +36,14 @@ COMING SOON
 ## Get Message ID
 ##### ❗️ This is important for **Reaction**
 1. COMING SOON
+
+
+# Disclaimer
+### Generell
+Discord wont support SelfBots. Your Discord Account can be banned if you abuse them. Also you can be banned from servers by spamming a server. 
+
+### Editing
+You are able to modify this Bot, but you must fork this bot. If you edit this bot I wont support you. Also I wont provide any help with for the normal Bot code. 
+
+### Bugs and Problems
+If you find any bugs or problems with the Bot, please open an Issue and I will try to fix this. 
