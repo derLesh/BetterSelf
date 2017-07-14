@@ -1,6 +1,8 @@
 # BetterSelf
 BetterSelf is a Discord Selfbot with "multiple" commands. I challenged myself to reach over 100 different commands in one SelfBot. (But we all know, this wont happen) :sweat_smile:
 
+⚠ You will need **Java 1.8** to execute the SelfBot
+
 ## Features
 * Unshorter > Unshort links like bit.ly and get the full url
 * NoMoney > Unshort adf.ly (and more) links
