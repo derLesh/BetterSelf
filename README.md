@@ -31,8 +31,8 @@ BetterSelf is a Discord Selfbot with "multiple" commands. I challenged myself to
 Press `CTRL + SHIFT + I` in your desktop client or in the browser. It will open the developer window for the discord page. Click on `Application`.
 
 ## Setup your user card
-COMMING SOON
+COMING SOON
 
 ## Get Message ID
 ##### This is important for **Reaction**
-1. COMMING SOON
+1. COMING SOON
