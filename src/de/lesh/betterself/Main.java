@@ -68,6 +68,8 @@ public class Main {
 		//jda.addEventListener(new SurveyClose());
 		jda.addEventListener(new DeleteMSG());
 		jda.addEventListener(new Memes());
+		jda.addEventListener(new Duden());
+		jda.addEventListener(new Postillon());
 		
 		System.out.println("[SUCCESSFUL] >> Added all EventListeners");
 		System.out.println("[SUCCESSFUL] >> Activating BetterSelf");

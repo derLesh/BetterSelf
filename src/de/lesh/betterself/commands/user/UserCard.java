@@ -23,7 +23,7 @@ public class UserCard extends ListenerAdapter{
 	public static String dir = System.getProperty("user.dir") + "/";
 	public static UserCardSetup SETUP = new UserCardSetup();
 	public static final Gson GSON = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
-    public static final SimpleLog LOG = SimpleLog.getLog("Application");
+    public static final SimpleLog LOG = SimpleLog.getLog("BetterSelf");
 	
 	public void onMessageReceived(MessageReceivedEvent e) {
 		Message msg = e.getMessage();
