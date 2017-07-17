@@ -13,8 +13,11 @@ import com.google.gson.GsonBuilder;
 import de.lesh.betterself.commands.*;
 import de.lesh.betterself.commands.admin.*;
 import de.lesh.betterself.commands.admin.org.*;
+import de.lesh.betterself.commands.admin.survey.*;
 import de.lesh.betterself.commands.fun.*;
 import de.lesh.betterself.commands.info.*;
+import de.lesh.betterself.commands.url.*;
+import de.lesh.betterself.commands.user.*;
 import de.lesh.betterself.util.Config;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -31,13 +34,14 @@ public class Main {
 	public static final Gson GSON = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
 	public static String fileName = "config.json";
 	public static String dir = System.getProperty("user.dir") + "/";
-    public static final SimpleLog LOG = SimpleLog.getLog("Application");
+    public static final SimpleLog LOG = SimpleLog.getLog("BetterSelf");
     public static User USER = null;
     public static final String OS = System.getProperty("os.name").toLowerCase(); 
 	
 	public static void main(String[] args) throws Exception{
 		installer();
 		setup();
+		UserCard.loading();
 		jda = new JDABuilder(AccountType.CLIENT).setToken(CONFIG.getToken()).buildAsync();
 		
 		System.out.println("[BOOT] >> Launching BetterSelf");
@@ -57,9 +61,17 @@ public class Main {
 		jda.addEventListener(new ServerInfo());
 		jda.addEventListener(new ListBots());
 		jda.addEventListener(new Reaction());
+		jda.addEventListener(new Lmgtfy());
+		//jda.addEventListener(new Translate());
+		jda.addEventListener(new UserCard());
+		jda.addEventListener(new Survey());
+		//jda.addEventListener(new SurveyClose());
+		jda.addEventListener(new DeleteMSG());
+		jda.addEventListener(new Memes());
 		
 		System.out.println("[SUCCESSFUL] >> Added all EventListeners");
-		System.out.println("[SUCCESSFUL] >> Activating RoleBot");
+		System.out.println("[SUCCESSFUL] >> Activating BetterSelf");
+		LOG.warn("[INFO] >> Dont use this to spam others discord server");
 	}
 	
 	public static void setup(){
@@ -71,6 +83,7 @@ public class Main {
 					writer.write(GSON.toJson(CONFIG));
 					writer.close();
 					LOG.info("Succesful created CONFIG file in " + dir);
+					System.exit(0);
 				} else {
 					LOG.info("Something went wrong. Error will be checked");
 					System.exit(0);

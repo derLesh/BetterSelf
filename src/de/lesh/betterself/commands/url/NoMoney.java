@@ -1,8 +1,6 @@
-package de.lesh.betterself.commands;
+package de.lesh.betterself.commands.url;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -38,7 +36,6 @@ public class NoMoney extends ListenerAdapter {
 				connect.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36");
 				connect.setRequestProperty("Referer", "http://thor.johanpaul.net/lengthen");
 				connect.setRequestMethod("GET");
-				BufferedReader in = new BufferedReader(new InputStreamReader(connect.getInputStream()));
 				String response = null;
 				try(Scanner s = new Scanner(connect.getInputStream())){
 				    s.useDelimiter("\\A");

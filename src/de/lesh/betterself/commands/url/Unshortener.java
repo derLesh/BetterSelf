@@ -1,4 +1,4 @@
-package de.lesh.betterself.commands;
+package de.lesh.betterself.commands.url;
 
 import java.io.BufferedReader;
 import java.io.IOException;

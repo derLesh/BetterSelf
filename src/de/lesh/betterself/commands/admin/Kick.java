@@ -18,10 +18,10 @@ public class Kick extends ListenerAdapter{
 		Member kicked = null;
 		String[] reasons = {"Spamming", "Racist", "Test"};
 		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "kick") && msg.getAuthor().equals(Main.USER)){
-			//String[] split = e.getMessage().getRawContent().split("\\s+", 2);
+			String[] split = e.getMessage().getRawContent().split("\\s+", 3);
 			EmbedBuilder eB = new EmbedBuilder();
 			kicked = e.getGuild().getMember((e.getMessage().getMentionedUsers().get(0)));
-			e.getGuild().getController().kick(kicked, "Invite: https://discord.gg/889PF8Q").queue();
+			e.getGuild().getController().kick(kicked, "Reason: " + reasons[Integer.parseInt(split[3])] + " - Invite: https://discord.gg/889PF8Q").queue();
 			eB.addField("Banned User", "" + kicked.getEffectiveName(), true);
 			eB.addField("Reason", reasons[2], false);
     		e.getChannel().sendMessage(eB.build()).queue(msge -> msge.delete().queueAfter(30, TimeUnit.SECONDS));
