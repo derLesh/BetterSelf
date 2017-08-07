@@ -47,3 +47,9 @@ You are able to modify this Bot, but you must fork this bot. If you edit this bo
 
 ### Bugs and Problems
 If you find any bugs or problems with the Bot, please open a new Issue [here](https://github.com/LeshDev/BetterSelf/issues/new) and I will try to fix this. 
+
+
+Creative Commons Lizenzvertrag
+BetterSelf von Lesh ist lizenziert unter einer Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz.
+Beruht auf dem Werk unter https://github.com/DV8FromTheWorld/JDA.
+Über diese Lizenz hinausgehende Erlaubnisse können Sie unter https://github.com/DV8FromTheWorld/JDA/blob/master/LICENSE erhalten.
