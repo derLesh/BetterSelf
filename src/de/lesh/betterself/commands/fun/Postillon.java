@@ -3,7 +3,6 @@ package de.lesh.betterself.commands.fun;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -52,4 +51,9 @@ public class Postillon extends ListenerAdapter{
         }
         return null;
     }
+	
+	public String getDescription(){
+		return Postillon24Image;
+		
+	}
 }

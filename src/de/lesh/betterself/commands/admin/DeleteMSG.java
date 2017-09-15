@@ -15,7 +15,7 @@ public class DeleteMSG extends ListenerAdapter{
 		Message msg = e.getMessage();
 		int def = 1;
 		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "delete") && msg.getAuthor().equals(Main.USER)){
-			String[] delNumber = e.getMessage().getRawContent().split("\\s+", 2); 
+			String[] delNumber = e.getMessage().getRawContent().split("\\s+", 3); 
 			try{
 				if(!delNumber[1].isEmpty() || delNumber[1] == null){
 					def = Integer.parseInt(delNumber[1]);
@@ -33,9 +33,13 @@ public class DeleteMSG extends ListenerAdapter{
 			}
 			
 			e.getChannel().getHistory().retrievePast(def == 100 ? 100 : def+1).queue(delete -> {
-				List<Message> delMSG = delete.stream().filter(m -> Main.USER.equals(m.getAuthor()) && !e.getMessage().equals(m)).collect(Collectors.toList());
-				delMSG.forEach(m -> m.delete().queue());
-				e.getChannel().sendMessage("[DELETE] >> Removed Messages: " + delMSG.size()).queueAfter(30, TimeUnit.SECONDS);
+				if(delNumber[2].equals("self")){
+					List<Message> delMSG = delete.stream().filter(m -> Main.USER.equals(e.getAuthor()) && !e.getMessage().equals(m)).collect(Collectors.toList());
+					delMSG.forEach(m -> m.delete().queue());
+					e.getChannel().sendMessage("[DELETE] >> Removed Messages: " + delMSG.size()).queueAfter(30, TimeUnit.SECONDS);
+				}else{
+					
+				}
 			});
 			e.getMessage().delete().queueAfter(1, TimeUnit.MILLISECONDS);
 		}

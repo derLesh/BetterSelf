@@ -13,7 +13,6 @@ public class Memes extends ListenerAdapter{
 	public void onMessageReceived(MessageReceivedEvent e) {
 		Message msg = e.getMessage();
 		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "meme") && msg.getAuthor().equals(Main.USER)){
-			// Random rng = new Random();
 			int meme = (int) (Math.random() * memes.length);
 			e.getChannel().sendMessage(memes[meme]).queue();
 			e.getMessage().delete().queueAfter(1, TimeUnit.MILLISECONDS);

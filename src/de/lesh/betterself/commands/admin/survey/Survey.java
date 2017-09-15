@@ -17,21 +17,21 @@ public class Survey extends ListenerAdapter{
 		Message msg = e.getMessage();
 		EmbedBuilder eB = new EmbedBuilder();
 		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "survey ") && msg.getAuthor().equals(Main.USER)){
-			String[] command = e.getMessage().getRawContent().split("\\s+", 2);
-			if(!(command[1] == "close")){
+			String[] command = e.getMessage().getRawContent().split("\\s+", 3);
+			if(command[1].equals("close")){
 				System.out.println("CLOSE");
-				String[] closeID = e.getMessage().getRawContent().split("\\s+", 3);
-				final MessageHistory id = e.getChannel().getHistoryAround(closeID[2], 2).complete();
-				final Message m = id.getMessageById(closeID[2]);
+				//String[] closeID = e.getMessage().getRawContent().split("\\s+", 3);
+				final MessageHistory id = e.getChannel().getHistoryAround(command[2], 2).complete();
+				final Message m = id.getMessageById(command[2]);
 				List<MessageReaction> reactions = m.getReactions();
 				eB.addField("Closed Survey", "```" + m.getRawContent() + "```", true);
 				eB.addField("Result", ":white_check_mark:: " + (reactions.get(0).getCount() - 1)  + "       -      :x:: " + (reactions.get(1).getCount() - 1), false);
 				System.out.println(reactions.get(1).getCount());
-				e.getChannel().sendMessage(eB.build()).queue();
+				e.getChannel().sendMessage(eB.build()).complete();
 				e.getMessage().delete().queueAfter(1, TimeUnit.MILLISECONDS);
 				try {
 					Thread.sleep(100L);
-					m.delete().queue();
+					m.delete().complete();
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}

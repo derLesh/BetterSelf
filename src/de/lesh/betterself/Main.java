@@ -70,6 +70,8 @@ public class Main {
 		jda.addEventListener(new Memes());
 		jda.addEventListener(new Duden());
 		jda.addEventListener(new Postillon());
+		jda.addEventListener(new Help());
+		jda.addEventListener(new ListGroup());
 		
 		System.out.println("[SUCCESSFUL] >> Added all EventListeners");
 		System.out.println("[SUCCESSFUL] >> Activating BetterSelf");
