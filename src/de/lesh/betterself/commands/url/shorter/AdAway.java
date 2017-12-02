@@ -1,4 +1,4 @@
-package de.lesh.betterself.commands.url;
+package de.lesh.betterself.commands.url.shorter;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -11,21 +11,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import de.lesh.betterself.Main;
+import de.lesh.betterself.util.lib;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-public class NoMoney extends ListenerAdapter {
+public class AdAway extends ListenerAdapter {
 
 	public static String output;
 	public void onMessageReceived(MessageReceivedEvent e) {
 		Message msg = e.getMessage();
-		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "nm") && msg.getAuthor().equals(Main.USER)){
+		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "adaway ") && msg.getAuthor().equals(Main.USER)&& !lib.getServerSecure(e)){
 			String[] split = e.getMessage().getRawContent().split("\\s+", 2);
-//			if(!(split[1] == "http")){
-//				System.out.println("Only works with HTTP at the beginning");
-//				return;
-//			}
 			String unshorting = split[1];
 			String unshortener = "http://thor.johanpaul.net/lengthen/result?url=" + unshorting;
 			
@@ -53,7 +50,7 @@ public class NoMoney extends ListenerAdapter {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			e.getChannel().sendMessage("[UNSHORTENER+] >> Original link: " + output).queue();
+			e.getChannel().sendMessage("[UNSHORTENER+] >> Original link: " + output).queueAfter(30, TimeUnit.SECONDS);
 			
 			System.out.println("[SUCCESSFUL] >> UNSHORTED+ - Original: " + unshorting + " - Unshorted: " + output);
 			e.getMessage().delete().queueAfter(1, TimeUnit.MILLISECONDS);

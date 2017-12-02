@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import de.lesh.betterself.Main;
+import de.lesh.betterself.util.lib;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -14,7 +15,7 @@ public class DeleteMSG extends ListenerAdapter{
 	public void onMessageReceived(MessageReceivedEvent e) {
 		Message msg = e.getMessage();
 		int def = 1;
-		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "delete") && msg.getAuthor().equals(Main.USER)){
+		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "delete") && msg.getAuthor().equals(Main.USER)&& !lib.getServerSecure(e)){
 			String[] delNumber = e.getMessage().getRawContent().split("\\s+", 3); 
 			try{
 				if(!delNumber[1].isEmpty() || delNumber[1] == null){

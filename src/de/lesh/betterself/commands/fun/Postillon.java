@@ -1,5 +1,6 @@
 package de.lesh.betterself.commands.fun;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import de.lesh.betterself.Main;
+import de.lesh.betterself.util.lib;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -23,7 +25,7 @@ public class Postillon extends ListenerAdapter{
 	public void onMessageReceived(MessageReceivedEvent e){
 		Message msg = e.getMessage();
 		EmbedBuilder eB = new EmbedBuilder();
-		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "postillon") && msg.getAuthor().equals(Main.USER)){
+		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "postillon") && msg.getAuthor().equals(Main.USER)&& !lib.getServerSecure(e)){
 			try {
 				String[] content = getWebContent(new URL("http://www.der-postillon.com/search/label/Newsticker")).split("\\+\\+\\+");
 				for (int i = 1; i < content.length; i += 2){
@@ -37,14 +39,15 @@ public class Postillon extends ListenerAdapter{
 			String tracker = tickers.get(rng.nextInt(tickers.size()));
 			
 			eB.addField("Postillon24 berichtet: ", "+++ " + tracker + " +++", true);
-			eB.setFooter("Postillon Liveticker - Stolen by roman", Postillon24Image);
+			eB.setFooter("Postillon Liveticker - Ehrliche News - 27/4", Postillon24Image);
+			eB.setColor(Color.ORANGE);
 			e.getChannel().sendMessage(eB.build()).queue();
 			e.getMessage().delete().queueAfter(1, TimeUnit.MILLISECONDS);
 		}
 	}
 	
 	public static String getWebContent(URL url) {
-        try (Scanner s = new Scanner(url.openStream())) {
+        try (Scanner s = new Scanner(url.openStream(), "UTF-8")) {
             s.useDelimiter("\\A");
             return s.next();
         } catch (IOException ignored) {

@@ -1,4 +1,4 @@
-package de.lesh.betterself.util;
+package de.lesh.betterself.settings;
 
 public class PersonificationSetup {
 

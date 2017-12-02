@@ -1,4 +1,4 @@
-package de.lesh.betterself.commands.url;
+package de.lesh.betterself.commands.url.shorter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,11 +10,12 @@ import java.util.concurrent.TimeUnit;
 
 import de.lesh.betterself.Main;
 import de.lesh.betterself.util.Config;
+import de.lesh.betterself.util.lib;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-public class Unshortener extends ListenerAdapter {
+public class Unshort extends ListenerAdapter {
 	
 	public static Config CONFIG = new Config();
 	public static String output;
@@ -22,7 +23,7 @@ public class Unshortener extends ListenerAdapter {
 	public void onMessageReceived(MessageReceivedEvent e){
 		Message msg = e.getMessage();
 		
-		if (msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "unshort") && msg.getAuthor().equals(Main.USER)) {
+		if (msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "unshort") && msg.getAuthor().equals(Main.USER)&& !lib.getServerSecure(e)) {
 			String[] split = e.getMessage().getRawContent().split("\\s+", 2);
 			String unshorting = "";
 			unshorting = split[1];

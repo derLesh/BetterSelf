@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 import java.util.concurrent.TimeUnit;
 
 import de.lesh.betterself.Main;
+import de.lesh.betterself.util.lib;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -15,7 +16,7 @@ public class Lmgtfy extends ListenerAdapter{
 	
 	public void onMessageReceived(MessageReceivedEvent e) {
 		Message msg = e.getMessage();
-		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "lmgtfy") && msg.getAuthor().equals(Main.USER)){
+		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "lmgtfy") && msg.getAuthor().equals(Main.USER)&& !lib.getServerSecure(e)){
 			String[] link = e.getMessage().getRawContent().split("\\s+", 2);
 			try {
 				String encoded = URLEncoder.encode(link[1], "UTF-8");

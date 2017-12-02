@@ -1,4 +1,4 @@
-package de.lesh.betterself.commands.admin.survey;
+package de.lesh.betterself.commands.server;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

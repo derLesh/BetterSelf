@@ -3,6 +3,7 @@ package de.lesh.betterself.commands;
 import java.util.concurrent.TimeUnit;
 
 import de.lesh.betterself.Main;
+import de.lesh.betterself.util.lib;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageHistory;
@@ -14,7 +15,7 @@ public class Reaction extends ListenerAdapter{
 	public void onMessageReceived(MessageReceivedEvent e) {
 		Message msg = e.getMessage();
 		EmbedBuilder eB = new EmbedBuilder();
-		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "react") && msg.getAuthor().equals(Main.USER)){
+		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "react") && msg.getAuthor().equals(Main.USER)&& !lib.getServerSecure(e)){
 			String[] split = e.getMessage().getRawContent().split("\\s+", 3);
 			final MessageHistory id = e.getChannel().getHistoryAround(split[1], 2).complete();
 			final Message m = id.getMessageById(split[1]);			

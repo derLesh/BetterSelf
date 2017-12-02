@@ -3,6 +3,7 @@ package de.lesh.betterself.commands.url;
 import java.util.concurrent.TimeUnit;
 
 import de.lesh.betterself.Main;
+import de.lesh.betterself.util.lib;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -13,7 +14,7 @@ public class Duden extends ListenerAdapter{
 	
 	public void onMessageReceived(MessageReceivedEvent e) {
 		Message msg = e.getMessage();
-		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "duden") && msg.getAuthor().equals(Main.USER)){
+		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "duden") && msg.getAuthor().equals(Main.USER)&& !lib.getServerSecure(e)){
 			String[] dudenURL = e.getMessage().getRawContent().split("\\s+", 2);
 			if(dudenURL[1].contains(" ")){
 				e.getChannel().sendMessage("[DUDEN] >> Remove the Space").queue();

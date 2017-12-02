@@ -3,6 +3,7 @@ package de.lesh.betterself.commands.admin;
 import java.util.concurrent.TimeUnit;
 
 import de.lesh.betterself.Main;
+import de.lesh.betterself.util.lib;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -12,7 +13,7 @@ public class Help extends ListenerAdapter{
 	public void onMessageReceived(MessageReceivedEvent e) {
 		Message msg = e.getMessage();
 		EmbedBuilder eB = new EmbedBuilder();
-		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "help") && msg.getAuthor().equals(Main.USER)){
+		if(msg.getRawContent().startsWith(Main.CONFIG.getPrefix() + "help") && msg.getAuthor().equals(Main.USER)&& !lib.getServerSecure(e)){
 			eB.addField(Main.CONFIG.getPrefix() + "unshort", "Unshort links like bit.ly and get the full url", false);
 			eB.addField(Main.CONFIG.getPrefix() + "nm", "Unshort adf.ly (and more) links", false);
 			eB.addField(Main.CONFIG.getPrefix() + "lmgtfy", "Creates a lmgtfy link with your text", false);
