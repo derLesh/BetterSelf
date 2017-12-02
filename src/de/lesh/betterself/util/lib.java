@@ -31,7 +31,7 @@ public class lib {
 	public static boolean getServerSecure(MessageReceivedEvent e) {
 		Long discordHypeSquad = 200661830648070145L;
 		Long discordFeedback = 268811439588900865L;
-		Long NoahDiscord = 247722479173238784L;
+		Long TestDiscord = 247722479173238784L;
 		
 		
 		if(e.getMessage().getGuild().getIdLong() == discordHypeSquad) { return true; }
